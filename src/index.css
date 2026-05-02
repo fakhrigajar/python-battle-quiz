@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050505;
+  --color-card: rgba(24, 24, 27, 0.6);
+  --color-team-a: #3b82f6; /* Blue-500 */
+  --color-team-b: #f43f5e; /* Rose-500 */
+  --color-muted: #71717a; /* Zinc-400 */
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #050505;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Atmosphere Effects */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blur-spot-a {
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 600px;
+  height: 600px;
+  border-radius: 9999px;
+  background: rgba(37, 99, 235, 0.2);
+  filter: blur(120px);
+}
+
+.blur-spot-b {
+  position: absolute;
+  bottom: -100px;
+  right: -100px;
+  width: 600px;
+  height: 600px;
+  border-radius: 9999px;
+  background: rgba(225, 29, 72, 0.15);
+  filter: blur(120px);
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Flank Layout */
+.flank-team {
+  position: relative;
+  width: 240px;
+  z-index: 20;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.flank-team.left {
+  /* No static left anymore, handled by flex container */
+}
+
+.flank-team.right {
+  text-align: right;
+}
+
+.flank-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.flank-name {
+  font-size: 3rem;
+  @media (min-width: 1400px) {
+    font-size: 4rem;
+  }
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.flank-score-card {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 1280px) {
+  .flank-team {
+    display: none; /* Hide wide flanks on smaller desktop, handled by mobile UI in App.tsx */
+  }
+}
+
+.card {
+  position: relative;
+  z-index: 10;
+  width: min(640px, calc(100vw - 40px));
+  min-height: 480px;
+  background: rgba(24, 24, 27, 0.6);
+  border: 1px solid rgba(39, 39, 42, 0.8);
+  border-radius: 32px;
+  backdrop-filter: blur(24px);
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+  padding: 2.5rem;
+  @media (min-width: 640px) {
+    padding: 3rem;
+  }
+}
+
+.code-editor-bg {
+  background: #09090b;
+  border: 1px solid #27272a;
+}
+
+.primary-btn {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+.primary-btn:hover {
+  background: #e4e4e7;
+  transform: translateY(-1px);
+}
+
+.secondary-btn {
+  background: rgba(39, 39, 42, 0.5);
+  border: 1px solid rgba(63, 63, 70, 0.5);
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+  background: rgba(63, 63, 70, 0.5);
+}
+
